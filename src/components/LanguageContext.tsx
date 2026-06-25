@@ -19,9 +19,24 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [theme, setThemeState] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    const storedLang = localStorage.getItem("lang") as Language;
-    if (storedLang && (storedLang === "en" || storedLang === "ar")) {
-      setLanguageState(storedLang);
+    let initialLang: Language | null = null;
+    if (typeof window !== "undefined") {
+      const path = window.location.pathname;
+      if (path.startsWith("/en")) {
+        initialLang = "en";
+      } else if (path.startsWith("/ar")) {
+        initialLang = "ar";
+      }
+    }
+
+    if (initialLang) {
+      setLanguageState(initialLang);
+      localStorage.setItem("lang", initialLang);
+    } else {
+      const storedLang = localStorage.getItem("lang") as Language;
+      if (storedLang && (storedLang === "en" || storedLang === "ar")) {
+        setLanguageState(storedLang);
+      }
     }
     
     const storedTheme = localStorage.getItem("theme") as "light" | "dark";
