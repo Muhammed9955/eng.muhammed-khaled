@@ -96,7 +96,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ title, courseId, cou
           className={`flex items-center justify-between w-full font-bold py-3 px-4 rounded-xl border transition duration-300 cursor-pointer text-xs ${
             copied
               ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-400"
-              : "bg-slate-900 border-white/5 text-slate-300 hover:bg-slate-800 hover:border-slate-700"
+              : " border-white/5 text-slate-300  hover:border-slate-700"
           }`}
         >
           <div className="flex items-center gap-2">

@@ -48,7 +48,7 @@ export default function CourseDetailClient({ id }: { id: string }) {
       <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Header Banner */}
-      <header className="relative w-full py-16 md:py-24 border-b border-white/5 bg-slate-950/20">
+      <header className="relative w-full py-16 md:py-24 border-b border-white/5 ">
         <div className="max-w-5xl mx-auto text-center px-4 relative z-10 space-y-4">
           <Link 
             href="/courses" 
@@ -84,7 +84,7 @@ export default function CourseDetailClient({ id }: { id: string }) {
             
             {/* Poster / Flyer */}
             <div className="glass-card border border-white/5 overflow-hidden flex justify-center items-center">
-              <div className="relative rounded-lg overflow-hidden border border-white/5 bg-slate-950 max-w-2xl w-full aspect-[4/3]">
+              <div className="relative rounded-lg overflow-hidden border border-white/5  max-w-2xl w-full aspect-[4/3]">
                 <img
                   src={course.image}
                   alt={title}
@@ -142,7 +142,7 @@ export default function CourseDetailClient({ id }: { id: string }) {
                 {outcomes.map((outcome, idx) => (
                   <li 
                     key={idx} 
-                    className="flex items-start gap-3 bg-slate-900/40 p-4 rounded-xl border border-white/5 hover:border-primary/20 transition-all duration-300"
+                    className="flex items-start gap-3  p-4 rounded-xl border border-white/5 hover:border-primary/20 transition-all duration-300"
                   >
                     <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                     <span className="text-slate-300 text-xs sm:text-sm leading-relaxed">
@@ -162,7 +162,7 @@ export default function CourseDetailClient({ id }: { id: string }) {
                 {syllabus.map((lesson, idx) => (
                   <div 
                     key={idx} 
-                    className="bg-slate-950/40 border border-white/5 p-5 rounded-xl flex gap-4 items-start"
+                    className=" border border-white/5 p-5 rounded-xl flex gap-4 items-start"
                   >
                     <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold border border-primary/20 shrink-0">
                       {idx + 1}
@@ -182,7 +182,7 @@ export default function CourseDetailClient({ id }: { id: string }) {
           <div className="lg:col-span-4 space-y-6">
             
             {/* Registration Box */}
-            <div className="bg-slate-900 border border-primary/20 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            <div className=" border border-primary/20 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
               
               <h3 className="text-lg sm:text-xl font-bold text-slate-200 mb-4 relative z-10 flex items-center gap-2">
@@ -197,7 +197,7 @@ export default function CourseDetailClient({ id }: { id: string }) {
               </p>
 
               {/* Pricing breakdown */}
-              <div className="bg-slate-950 border border-white/5 p-4 rounded-xl mb-6 relative z-10 flex items-center justify-between">
+              <div className=" border border-white/5 p-4 rounded-xl mb-6 relative z-10 flex items-center justify-between">
                 <div>
                   <span className="text-[10px] text-slate-500 uppercase line-through">
                     {course.originalPrice} {course.priceCurrency}
