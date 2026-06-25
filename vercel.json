@@ -1,0 +1,13 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "rewrites": [
+    { "source": "/en", "destination": "/" },
+    { "source": "/ar", "destination": "/" },
+    { "source": "/en/courses", "destination": "/courses" },
+    { "source": "/ar/courses", "destination": "/courses" },
+    { "source": "/en/courses/:id", "destination": "/courses/:id" },
+    { "source": "/ar/courses/:id", "destination": "/courses/:id" }
+  ]
+}
