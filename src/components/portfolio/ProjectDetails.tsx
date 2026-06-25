@@ -1,5 +1,6 @@
 import React from "react";
 import { ExternalLink } from "lucide-react";
+import { useLanguage } from "../LanguageContext";
 import { Project } from "./projectsData";
 
 interface ProjectDetailsProps {
@@ -15,8 +16,16 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = ({
   totalProjects,
   language
 }) => {
+  const { theme } = useLanguage();
+  const isDark = theme === "dark";
   const name = language === "ar" ? project.name.ar : project.name.en;
   const desc = language === "ar" ? project.desc.ar : project.desc.en;
+
+  const tagBg = isDark ? "#1e293b" : "#f1f5f9";
+  const tagText = isDark ? "#f1f5f9" : "#1e293b";
+  const tagBorder = isDark ? "rgba(255,255,255,0.10)" : "rgba(8,145,178,0.18)";
+  const descColor = isDark ? "#e2e8f0" : "#374151";
+
 
   return (
     <div className="space-y-6 text-start">
@@ -30,7 +39,7 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = ({
         {name}
       </h3>
 
-      <p className="text-slate-400 text-base sm:text-lg leading-relaxed">
+      <p style={{ color: descColor }} className="text-base sm:text-lg leading-relaxed">
         {desc}
       </p>
 
@@ -52,7 +61,12 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = ({
         {project.tags.map((tag) => (
           <span
             key={tag}
-            className="text-sm bg-slate-900 border border-white/5 px-4 py-2 rounded-lg text-slate-300 font-bold"
+            style={{
+              background: tagBg,
+              color: tagText,
+              border: `1px solid ${tagBorder}`,
+            }}
+            className="text-sm px-4 py-2 rounded-lg font-bold"
           >
             {tag}
           </span>
