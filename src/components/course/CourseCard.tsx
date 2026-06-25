@@ -12,8 +12,14 @@ interface CourseCardProps {
 }
 
 export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
-  const { language } = useLanguage();
+  const { language, theme } = useLanguage();
   const [copied, setCopied] = useState(false);
+  const isDark = theme === "dark";
+
+  const titleColor = isDark ? "#ffffff" : "#111827";
+  const descColor = isDark ? "#e2e8f0" : "#374151";
+  const durationColor = isDark ? "#94a3b8" : "#6b7280";
+  const cardBg = isDark ? "rgba(17,24,39,0.6)" : "rgba(255,255,255,0.9)";
 
   const title = language === "ar" ? course.title.ar : course.title.en;
   const desc = language === "ar" ? course.desc.ar : course.desc.en;
@@ -53,7 +59,7 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   };
 
   return (
-    <div className="glass-card flex flex-col justify-between overflow-hidden group h-full">
+    <div style={{ background: cardBg }} className="flex flex-col justify-between overflow-hidden group h-full rounded-2xl border border-white/5 backdrop-blur-sm transition-all duration-300 hover:shadow-lg">
       {/* Image Container */}
       <div className="relative aspect-[4/3] w-full bg-slate-950 overflow-hidden border-b border-white/5">
         <Link href={`/courses/${course.id}`} className="block w-full h-full">
@@ -82,15 +88,15 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
       {/* Content Container */}
       <div className="p-6 flex-1 flex flex-col justify-between">
         <div>
-          <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-2">
+          <span style={{ color: durationColor }} className="text-xs font-semibold uppercase tracking-wider block mb-2">
             {duration}
           </span>
-          <h3 className="text-lg sm:text-xl font-bold text-slate-200 group-hover:text-primary transition-all line-clamp-2 leading-snug mb-3">
+          <h3 style={{ color: titleColor }} className="text-lg sm:text-xl font-bold group-hover:text-primary transition-all line-clamp-2 leading-snug mb-3">
             <Link href={`/courses/${course.id}`}>
               {title}
             </Link>
           </h3>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed line-clamp-3 mb-6">
+          <p style={{ color: descColor }} className="text-sm sm:text-base leading-relaxed line-clamp-3 mb-6">
             {desc}
           </p>
         </div>

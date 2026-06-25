@@ -8,9 +8,16 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const CourseSection: React.FC = () => {
-  const { language } = useLanguage();
+  const { language, theme } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
+  const isDark = theme === "dark";
+
+  const subtitleColor = isDark ? "#e2e8f0" : "#374151";
+  const btnBg = isDark ? "#1e293b" : "#f1f5f9";
+  const btnText = isDark ? "#f1f5f9" : "#111827";
+  const btnBorder = isDark ? "rgba(255,255,255,0.1)" : "rgba(8,145,178,0.2)";
+  const btnHoverBg = isDark ? "#334155" : "#e2e8f0";
 
   const handleNext = () => {
     setDirection("right");
@@ -58,7 +65,7 @@ export const CourseSection: React.FC = () => {
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black text-slate-200 leading-tight">
             {language === "ar" ? "الكورسات والورش التدريبية" : "Available Training Courses"}
           </h2>
-          <p className="mt-4 text-lg text-slate-400">
+          <p style={{ color: subtitleColor }} className="mt-4 text-lg leading-relaxed">
             {language === "ar"
               ? "برامج تدريبية متخصصة ومكثفة تركز على التطبيق العملي لبناء مسيرتك المهنية في هندسة البرمجيات."
               : "Practical, career-focused bootcamps and training sessions designed to take you from zero to production ready."}
@@ -129,16 +136,22 @@ export const CourseSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Explore all courses CTA */}
         <div className="mt-16 text-center pt-8 border-t border-white/5">
-          <p className="text-slate-400 text-sm sm:text-base mb-4">
+          <p style={{ color: subtitleColor }} className="text-sm sm:text-base mb-4">
             {language === "ar" 
               ? "هل تريد تصفح كامل تفاصيل ومناهج الكورسات؟" 
               : "Want to check curriculum schedules and full details?"}
           </p>
           <a
             href="/courses"
-            className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 border border-white/10 text-white font-bold px-6 py-3.5 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+            style={{
+              background: btnBg,
+              color: btnText,
+              border: `1px solid ${btnBorder}`,
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = btnHoverBg)}
+            onMouseLeave={(e) => (e.currentTarget.style.background = btnBg)}
+            className="inline-flex items-center gap-2 font-bold px-6 py-3.5 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
           >
             <span>{language === "ar" ? "تصفح جميع الكورسات والورش" : "Browse All Courses & Workshops"}</span>
             <span>{language === "ar" ? "←" : "→"}</span>
