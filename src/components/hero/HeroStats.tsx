@@ -12,21 +12,24 @@ export const HeroStats: React.FC<HeroStatsProps> = ({ language }) => {
   const labelColor = isDark ? "#e2e8f0" : "#374151";
   const cardBorder = isDark ? "1px solid rgba(255,255,255,0.08)" : "1px solid rgba(8,145,178,0.15)";
 
+  const cardBg = isDark ? "#111827" : "#ffffff";
+  const cardShadow = isDark ? "none" : "0 1px 3px rgba(0,0,0,0.08)";
+
   return (
-    <div className={`grid grid-cols-3 gap-4 pt-4 max-w-md`}>
-      <div style={{ border: cardBorder }} className={`p-3.5 rounded-xl text-center ${cardBgClass}`}>
+    <div className="grid grid-cols-3 gap-4 pt-4 max-w-md">
+      <div style={{ border: cardBorder, background: cardBg, boxShadow: cardShadow }} className="p-3.5 rounded-xl text-center">
         <span className="block text-2xl font-black text-primary">5+</span>
         <span style={{ color: labelColor }} className="text-xs uppercase font-bold mt-1 block">
           {language === "ar" ? "سنوات خبرة" : "Years Exp"}
         </span>
       </div>
-      <div style={{ border: cardBorder }} className={`p-3.5 rounded-xl text-center ${cardBgClass}`}>
+      <div style={{ border: cardBorder, background: cardBg, boxShadow: cardShadow }} className="p-3.5 rounded-xl text-center">
         <span className="block text-2xl font-black text-emerald-400">100%</span>
         <span style={{ color: labelColor }} className="text-xs uppercase font-bold mt-1 block">
           {language === "ar" ? "تطبيق عملي" : "Hands-on"}
         </span>
       </div>
-      <div style={{ border: cardBorder }} className={`p-3.5 rounded-xl text-center ${cardBgClass}`}>
+      <div style={{ border: cardBorder, background: cardBg, boxShadow: cardShadow }} className="p-3.5 rounded-xl text-center">
         <span className="block text-2xl font-black text-amber-500">Active</span>
         <span style={{ color: labelColor }} className="text-xs uppercase font-bold mt-1 block">
           {language === "ar" ? "مطور برمجيات" : "Developer"}
