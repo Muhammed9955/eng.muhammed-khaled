@@ -37,22 +37,22 @@
   --font-sans: var(--font-sans);
   --font-arabic: var(--font-arabic);
 
-  /* Override standard slate colors to map to the new light scheme */
+  /* Light mode: dark slate tones for strong readability */
   --color-slate-950: #F9FAFB;      /* Page background */
   --color-slate-900: #ffffff;      /* Card/accent background */
   --color-slate-800: #e5e7eb;      /* Subtle border */
   --color-slate-700: #d1d5db;      /* Intermediate border */
-  --color-slate-600: #4b5563;      /* Muted slate text */
-  --color-slate-500: #6b7280;      /* Slate body text */
-  --color-slate-400: #374151;      /* Primary readable dark text */
-  --color-slate-300: #1f2937;      /* Bold dark text */
-  --color-slate-200: #111827;      /* Strong accent dark text */
+  --color-slate-600: #374151;      /* Muted slate text — darker for legibility */
+  --color-slate-500: #4b5563;      /* Slate body text — dark gray */
+  --color-slate-400: #1f2937;      /* Primary readable dark text */
+  --color-slate-300: #111827;      /* Bold dark text */
+  --color-slate-200: #0f172a;      /* Strong accent dark text */
 }
 
 /* Dark Theme overrides when .dark class is on the html/root element */
 .dark {
   --background: #0B0F19;
-  --foreground: #F9FAFB;
+  --foreground: #F1F5F9;           /* Slightly cooler bright white for dark mode */
   
   /* MMS Solutions Turquoise Accent */
   --primary: #14D2C3;
@@ -61,29 +61,45 @@
   --secondary: #111827;
   --secondary-hover: #1f2937;
   
-  --muted: #9ca3af;
+  --muted: #94a3b8;
   --muted-background: #111827;
   --border: #1f2937;
 
+  /* Dark mode: bright, high-contrast text tones */
   --color-slate-950: #0B0F19;      /* Page background */
   --color-slate-900: #111827;      /* Card background */
-  --color-slate-800: #1f2937;      /* Subtle border */
-  --color-slate-700: #374151;      /* Intermediate border */
-  --color-slate-600: #4b5563;      /* Muted text light */
-  --color-slate-500: #9ca3af;      /* Slate body text */
-  --color-slate-400: #cbd5e1;      /* Primary readable text */
-  --color-slate-300: #e5e7eb;      /* Bold text */
-  --color-slate-200: #ffffff;      /* Strong accent text */
+  --color-slate-800: #1e293b;      /* Subtle border */
+  --color-slate-700: #334155;      /* Intermediate border */
+  --color-slate-600: #94a3b8;      /* Muted text — noticeably lighter for clarity */
+  --color-slate-500: #b0bec5;      /* Body text — clearly readable silver */
+  --color-slate-400: #e2e8f0;      /* Primary readable text — bright slate */
+  --color-slate-300: #f1f5f9;      /* Bold text — near white */
+  --color-slate-200: #ffffff;      /* Strong accent text — pure white */
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
+/* Headings — extra sharp in both themes */
 h1, h2, h3, h4, h5, h6 {
   color: var(--foreground);
+  letter-spacing: -0.02em;
+}
+
+/* Body paragraphs and general text — boosted for dark mode contrast */
+p, li, span, label {
+  color: inherit;
+}
+
+.dark p,
+.dark li,
+.dark label {
+  color: #cbd5e1; /* slate-300 equivalent — crisp silver for paragraphs */
 }
 
 /* Custom Scrollbar for Light Mode */
@@ -102,10 +118,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #334155;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #475569;
 }
 
 /* Glassmorphism Classes for Light Mode */
@@ -134,19 +150,19 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glassmorphism Classes for Dark Mode */
 .dark .glass {
-  background: rgba(15, 23, 42, 0.75);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(11, 15, 25, 0.80);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .dark .glass-card {
-  background: rgba(30, 41, 59, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .dark .glass-card:hover {
-  background: rgba(30, 41, 59, 0.6);
-  border-color: rgba(14, 165, 233, 0.3);
-  box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.15);
+  background: rgba(30, 41, 59, 0.75);
+  border-color: rgba(20, 210, 195, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(20, 210, 195, 0.12);
 }
 
 /* Map borders to soft light-theme colors (default) */
@@ -165,16 +181,27 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Map borders to dark-theme transparent colors */
 .dark .border-white\/5 {
-  border-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
 }
 .dark .border-white\/10 {
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
 }
 .dark .border-slate-800 {
-  border-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
 }
 .dark .border-slate-700 {
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Dark mode text utility overrides — ensure visibility */
+.dark .text-slate-400 {
+  color: #e2e8f0 !important;   /* Brighten slate-400 → near white in dark mode */
+}
+.dark .text-slate-500 {
+  color: #b0bec5 !important;   /* Brighter muted text */
+}
+.dark .text-slate-600 {
+  color: #94a3b8 !important;   /* Visible secondary text */
 }
 
 /* Smooth Scrolling */

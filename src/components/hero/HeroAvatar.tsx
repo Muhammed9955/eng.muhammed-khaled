@@ -20,10 +20,10 @@ export const HeroAvatar: React.FC<HeroAvatarProps> = ({ language }) => {
           />
           
           {/* Bottom Overlay Gradient for Details */}
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/75 to-transparent p-4 pt-12 flex flex-col items-center text-center">
+          {/* <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/75 to-transparent p-4 pt-12 flex flex-col items-center text-center">
             <span className="text-lg font-bold text-slate-400 tracking-tight">Eng. Muhammed Khaled</span>
             <span className="text-[10px] text-slate-400 font-medium mt-0.5">Software Engineer @ SehaPracto</span>
-          </div>
+          </div> */}
         </div>
       </div>
 
